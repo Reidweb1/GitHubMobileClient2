@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		2894101019F5B48B007B12A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894100F19F5B48B007B12A1 /* AppDelegate.swift */; };
 		2894101319F5B48B007B12A1 /* GitHub2Go.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2894101119F5B48B007B12A1 /* GitHub2Go.xcdatamodeld */; };
-		2894101519F5B48B007B12A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894101419F5B48B007B12A1 /* ViewController.swift */; };
 		2894101819F5B48B007B12A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2894101619F5B48B007B12A1 /* Main.storyboard */; };
 		2894101A19F5B48B007B12A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2894101919F5B48B007B12A1 /* Images.xcassets */; };
 		2894101D19F5B48B007B12A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2894101B19F5B48B007B12A1 /* LaunchScreen.xib */; };
 		2894102919F5B48B007B12A1 /* GitHub2GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894102819F5B48B007B12A1 /* GitHub2GoTests.swift */; };
+		2894103319F5B63C007B12A1 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103219F5B63C007B12A1 /* RepoViewController.swift */; };
+		2894103519F5B6EF007B12A1 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103419F5B6EF007B12A1 /* RepoTableViewCell.swift */; };
+		2894103719F5B786007B12A1 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103619F5B786007B12A1 /* Repo.swift */; };
+		2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103B19F5BAA4007B12A1 /* NetworkController.swift */; };
+		2894103E19F5BB29007B12A1 /* SplitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +35,17 @@
 		2894100E19F5B48B007B12A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2894100F19F5B48B007B12A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2894101219F5B48B007B12A1 /* GitHub2Go.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitHub2Go.xcdatamodel; sourceTree = "<group>"; };
-		2894101419F5B48B007B12A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2894101719F5B48B007B12A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2894101919F5B48B007B12A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2894101C19F5B48B007B12A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2894102219F5B48B007B12A1 /* GitHub2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHub2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2894102719F5B48B007B12A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2894102819F5B48B007B12A1 /* GitHub2GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub2GoTests.swift; sourceTree = "<group>"; };
+		2894103219F5B63C007B12A1 /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		2894103419F5B6EF007B12A1 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		2894103619F5B786007B12A1 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		2894103B19F5BAA4007B12A1 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				2894100F19F5B48B007B12A1 /* AppDelegate.swift */,
-				2894101419F5B48B007B12A1 /* ViewController.swift */,
-				2894101619F5B48B007B12A1 /* Main.storyboard */,
-				2894101919F5B48B007B12A1 /* Images.xcassets */,
-				2894101B19F5B48B007B12A1 /* LaunchScreen.xib */,
+				2894103A19F5BA77007B12A1 /* Controller */,
+				2894103919F5BA72007B12A1 /* View */,
+				2894103819F5BA6D007B12A1 /* Model */,
 				2894101119F5B48B007B12A1 /* GitHub2Go.xcdatamodeld */,
 				2894100D19F5B48B007B12A1 /* Supporting Files */,
 			);
@@ -113,6 +120,35 @@
 				2894102719F5B48B007B12A1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2894103819F5BA6D007B12A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2894103619F5B786007B12A1 /* Repo.swift */,
+				2894103B19F5BAA4007B12A1 /* NetworkController.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2894103919F5BA72007B12A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2894101919F5B48B007B12A1 /* Images.xcassets */,
+				2894101B19F5B48B007B12A1 /* LaunchScreen.xib */,
+				2894101619F5B48B007B12A1 /* Main.storyboard */,
+				2894103419F5B6EF007B12A1 /* RepoTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2894103A19F5BA77007B12A1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2894103219F5B63C007B12A1 /* RepoViewController.swift */,
+				2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,8 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2894101519F5B48B007B12A1 /* ViewController.swift in Sources */,
+				2894103319F5B63C007B12A1 /* RepoViewController.swift in Sources */,
 				2894101019F5B48B007B12A1 /* AppDelegate.swift in Sources */,
+				2894103719F5B786007B12A1 /* Repo.swift in Sources */,
+				2894103519F5B6EF007B12A1 /* RepoTableViewCell.swift in Sources */,
+				2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */,
+				2894103E19F5BB29007B12A1 /* SplitDetailViewController.swift in Sources */,
 				2894101319F5B48B007B12A1 /* GitHub2Go.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
