@@ -18,6 +18,7 @@
 		2894103719F5B786007B12A1 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103619F5B786007B12A1 /* Repo.swift */; };
 		2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103B19F5BAA4007B12A1 /* NetworkController.swift */; };
 		2894103E19F5BB29007B12A1 /* SplitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */; };
+		2894104019F5CA0B007B12A1 /* InitialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		2894103619F5B786007B12A1 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		2894103B19F5BAA4007B12A1 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitDetailViewController.swift; sourceTree = "<group>"; };
+		2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				2894103219F5B63C007B12A1 /* RepoViewController.swift */,
 				2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */,
+				2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */,
 				2894103E19F5BB29007B12A1 /* SplitDetailViewController.swift in Sources */,
 				2894101319F5B48B007B12A1 /* GitHub2Go.xcdatamodeld in Sources */,
+				2894104019F5CA0B007B12A1 /* InitialScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +455,7 @@
 				2894102E19F5B48B007B12A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2894102F19F5B48B007B12A1 /* Build configuration list for PBXNativeTarget "GitHub2GoTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +464,7 @@
 				2894103119F5B48B007B12A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

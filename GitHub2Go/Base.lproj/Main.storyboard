@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Initial Screen View Controller-->
         <scene sceneID="IJI-xZ-iRP">
             <objects>
-                <viewController id="koR-8X-oAG" sceneMemberID="viewController">
+                <viewController id="koR-8X-oAG" customClass="InitialScreenViewController" customModule="GitHub2Go" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="89l-V3-V9f"/>
                         <viewControllerLayoutGuide type="bottom" id="5HU-72-8VR"/>

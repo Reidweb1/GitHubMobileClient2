@@ -10,11 +10,16 @@ import UIKit
 
 class SplitDetailViewController: UIViewController, UISplitViewControllerDelegate {
 
+    var initialViewController: InitialScreenViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let splitVC = self.childViewControllers[0] as UISplitViewController
         splitVC.delegate = self
+        
+        let navController = splitVC.childViewControllers[0] as UINavigationController
+        self.initialViewController = navController.childViewControllers[0] as? InitialScreenViewController
 
         // Do any additional setup after loading the view.
     }
@@ -24,9 +29,13 @@ class SplitDetailViewController: UIViewController, UISplitViewControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-
-    func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-        return false
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController!, ontoPrimaryViewController primaryViewController: UIViewController!) -> Bool {
+        if self.initialViewController?.firstLoad == true {
+            self.initialViewController?.firstLoad = false
+            return true
+        } else {
+            return false
+        }
     }
     
     /*
