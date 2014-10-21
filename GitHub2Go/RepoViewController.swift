@@ -8,9 +8,11 @@
 
 import UIKit
 
-class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var repos: [Repo]?
     var networkController: NetworkController?
     
@@ -21,6 +23,7 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.networkController = appDelegate.networkController
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.searchBar.delegate = self
         
         self.networkController?.repoFetchRequest({ (errorDescription, repos) -> Void in
             if errorDescription == nil {
@@ -55,15 +58,15 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return self.repos!.count
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        println(searchText)
     }
-    */
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        var searchText = self.searchBar.text
+        // self.repos = self.networkController.returnSearchResults(searchText)
+        // self.tableView.reloadData()
+    }
 
 }

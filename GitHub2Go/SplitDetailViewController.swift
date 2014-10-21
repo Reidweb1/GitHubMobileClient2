@@ -11,12 +11,16 @@ import UIKit
 class SplitDetailViewController: UIViewController, UISplitViewControllerDelegate {
 
     var initialViewController: InitialScreenViewController!
+    var networkController: NetworkController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let splitVC = self.childViewControllers[0] as UISplitViewController
         splitVC.delegate = self
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.networkController = appDelegate.networkController
         
         let navController = splitVC.childViewControllers[0] as UINavigationController
         self.initialViewController = navController.childViewControllers[0] as? InitialScreenViewController
