@@ -11,10 +11,16 @@ import Foundation
 class Repo {
     var repoInformation: NSDictionary?
     var repoName: String?
+    var starCount: Int?
+    var followersCount: Int?
+    var forkCount: Int?
     
     init(repoInfo: NSDictionary) {
         self.repoInformation = repoInfo
         self.repoName = self.repoInformation!.valueForKey("name") as? String
+        self.starCount = self.repoInformation!.valueForKey("stargazers_count") as? Int
+        self.followersCount = self.repoInformation!.valueForKey("watchers_count") as? Int
+        self.forkCount = self.repoInformation!.valueForKey("forks_count") as? Int
     }
     
     class func parseJOSNDataIntoRepos(rawJSONData: NSData ) -> [Repo]? {
@@ -29,11 +35,13 @@ class Repo {
                     if let repoDictionary: NSDictionary = JSONDict as? NSDictionary {
                         var newRepo = Repo(repoInfo: repoDictionary)
                         repos.append(newRepo)
+                        println(newRepo.repoName)
                     }
                 }
             }
             return repos
+        } else {
+            return nil
         }
-        return nil
     }
 }

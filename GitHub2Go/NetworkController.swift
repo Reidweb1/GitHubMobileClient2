@@ -17,6 +17,9 @@ class NetworkController {
     let githubScope = "scope=user,repo"
     let redirectURL = "redirect_uri=placeholdername://test"
     let githubPostURL = "https://github.com/login/oauth/access_token"
+    var accessToken = ""
+    
+    var URLSession: NSURLSession = NSURLSession()
     
     func requestOAuthAccess() {
         let url = githubOAuthURL + clientID + "&" + redirectURL + "&" + githubScope
@@ -40,7 +43,7 @@ class NetworkController {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = postData
         
-        var dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        var dataTask: Void = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error != nil {
                 println("ERROR")
             } else {
@@ -49,10 +52,28 @@ class NetworkController {
                     case 200...204:
                         println("Success")
                         var tokenResponse = NSString(data: data, encoding: NSASCIIStringEncoding)
+                        println(tokenResponse)
                         
-                        var configuration = NSURLSessionConfiguration()
-                        configuration.setValue("", forKey: "Authorization:")
+                        let componants = tokenResponse.componentsSeparatedByString("&")
+                        for componant in componants {
+                            let items = componant.componentsSeparatedByString("=")
+                            var isToken = false
+                            for item in items {
+                                if isToken == true {
+                                    self.accessToken = item as String
+                                    NSUserDefaults.standardUserDefaults().setObject(item, forKey: "Token")
+                                    NSUserDefaults.standardUserDefaults().synchronize()
+                                    println("Token: \(item)")
+                                }
+                                if item as NSString == "access_token" {
+                                    isToken = true
+                                }
+                            }
+                        }
+                        var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+                        configuration.HTTPAdditionalHeaders = ["Authoriziation" : "token \(self.accessToken)"]
                         var mySession = NSURLSession(configuration: configuration)
+                        self.URLSession = mySession
                     default:
                         println("ERROR")
                     }
@@ -61,16 +82,22 @@ class NetworkController {
         }).resume()
     }
     
-    func repoFetchRequest (completionHandler: (errorDescription: String?, repos: [Repo]) -> Void) {
-        let url = NSURL(string: "http://127.0.0.1:3000")
+    func repoFetchRequest (searchTerm: String, completionHandler: (errorDescription: String?, repos: [Repo]) -> Void) {
         
-        let repoTask = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let url = NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)+language:assembly&sort=stars&order=desc")
+        println(url)
+        let customSession = self.URLSession
+        let repoTask = customSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             
             if let httpResponse = response as? NSHTTPURLResponse {
                 println(httpResponse.statusCode)
                 switch httpResponse.statusCode {
                 case 200...204:
                     println("SUCCESS")
+                    println(httpResponse)
+                    if data == nil {
+                        println("data returned was nil")
+                    }
                     let repos = Repo.parseJOSNDataIntoRepos(data)
                     completionHandler(errorDescription: nil, repos: repos!)
                 default:

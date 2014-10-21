@@ -11,6 +11,10 @@ import UIKit
 class RepoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var repoNameLabel: UILabel!
+    @IBOutlet weak var stargazersLabel: UILabel!
+    @IBOutlet weak var watchersLabel: UILabel!
+    @IBOutlet weak var forksLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

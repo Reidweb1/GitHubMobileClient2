@@ -24,19 +24,6 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.delegate = self
-        
-        self.networkController?.repoFetchRequest({ (errorDescription, repos) -> Void in
-            if errorDescription == nil {
-                self.repos = repos
-                println("Success")
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    self.tableView.reloadData()
-                })
-            } else {
-                println("Error on Tableview Load")
-            }
-        })
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +35,9 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("REPO_CELL") as RepoTableViewCell
         let repo = self.repos![indexPath.row] as Repo
         cell.repoNameLabel.text = repo.repoName
+        cell.stargazersLabel.text = "Stargazers: " + String(repo.starCount!)
+        cell.watchersLabel.text = "Watchers: " + String(repo.followersCount!)
+        cell.forksLabel.text = "Forks: " + String(repo.forkCount!)
         return cell
     }
     
@@ -59,14 +49,22 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println(searchText)
-    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        var searchText = self.searchBar.text
-        // self.repos = self.networkController.returnSearchResults(searchText)
-        // self.tableView.reloadData()
+        if self.searchBar.text != nil {
+            var searchText = self.searchBar.text
+            println(searchText)
+            self.networkController?.repoFetchRequest(searchText, completionHandler: { (errorDescription, repos) -> Void in
+                if errorDescription == nil {
+                    self.repos = repos
+                    println("Success")
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        self.tableView.reloadData()
+                    })
+                } else {
+                    println("Error on Tableview Load")
+                }
+            })
+        }
     }
 
 }

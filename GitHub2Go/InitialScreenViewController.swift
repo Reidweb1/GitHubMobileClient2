@@ -11,10 +11,15 @@ import UIKit
 class InitialScreenViewController: UIViewController {
 
     var firstLoad: Bool = true
+    var networkController: NetworkController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.networkController = appDelegate.networkController
+        
+        self.networkController?.requestOAuthAccess()
         // Do any additional setup after loading the view.
     }
 

@@ -18,20 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-//        let key = "MyKey"
-//        if let value = NSUserDefaults.standardUserDefaults().valueForKey(key) as? String {
-//            println(value)
-//        } else {
-//            NSUserDefaults.standardUserDefaults().setObject("MyValue", forKey: key)
-//            NSUserDefaults.standardUserDefaults().synchronize()
-//        }
+        let key = "Token"
+        if let value = NSUserDefaults.standardUserDefaults().valueForKey(key) as? String {
+            self.networkController.accessToken = value
+        } else {
+            NSUserDefaults.standardUserDefaults().setObject("MyValue", forKey: key)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
         
         return true
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
         println(url)
-        
         self.networkController.handleOAUTHURL(url)
         return true
     }
