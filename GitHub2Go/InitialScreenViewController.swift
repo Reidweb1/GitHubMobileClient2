@@ -18,8 +18,17 @@ class InitialScreenViewController: UIViewController {
 
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
-        
-        self.networkController?.requestOAuthAccess()
+
+        let key = "Token"
+        if let value = NSUserDefaults.standardUserDefaults().valueForKey(key) as? String {
+            self.networkController!.accessToken = value
+            var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            configuration.HTTPAdditionalHeaders = ["Authoriziation" : "token \(self.networkController!.accessToken)"]
+            var mySession = NSURLSession(configuration: configuration)
+            self.networkController!.URLSession = mySession
+        } else {
+            self.networkController?.requestOAuthAccess()
+        }
         // Do any additional setup after loading the view.
     }
 

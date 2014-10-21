@@ -17,15 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-        let key = "Token"
-        if let value = NSUserDefaults.standardUserDefaults().valueForKey(key) as? String {
-            self.networkController.accessToken = value
-        } else {
-            NSUserDefaults.standardUserDefaults().setObject("MyValue", forKey: key)
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-        
         return true
     }
 
