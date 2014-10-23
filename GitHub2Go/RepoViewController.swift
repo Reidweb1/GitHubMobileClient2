@@ -64,6 +64,7 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     println("Error on Tableview Load")
                 }
             })
+            self.searchBar.resignFirstResponder()
         }
     }
 

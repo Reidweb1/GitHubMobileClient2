@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CQI-XO-URw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CQI-XO-URw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -47,6 +47,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Z99-J8-grb" kind="show" identifier="SHOW_USERS" id="B8i-ks-wZb"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TtF-cs-RMB">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -62,7 +65,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="oaE-qg-s5z" kind="showDetail" id="aad-G1-sNr"/>
+                                            <segue destination="oaE-qg-s5z" kind="showDetail" identifier="SHOW_REPOS" id="aad-G1-sNr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aqs-dD-P75">
@@ -92,6 +95,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pj3-Oe-SuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1143" y="21"/>
+        </scene>
+        <!--User View Controller-->
+        <scene sceneID="ggD-oE-R8M">
+            <objects>
+                <viewController id="Z99-J8-grb" customClass="UserViewController" customModule="GitHub2Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Ua-Uj-7x6"/>
+                        <viewControllerLayoutGuide type="bottom" id="du6-5V-7qK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bhC-i6-jfV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ryL-49-CQb">
+                                <rect key="frame" x="0.0" y="52" width="600" height="548"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YHy-P3-jjm">
+                                    <size key="itemSize" width="200" height="150"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_CELL" id="8AN-FE-QKP" customClass="UserCollectionViewCell" customModule="GitHub2Go" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_VIEW_HEADER" id="9bV-Uy-w5T">
+                                    <rect key="frame" x="0.0" y="44" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNf-xs-lqQ">
+                                            <rect key="frame" x="278" y="13" width="45" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="zNf-xs-lqQ" secondAttribute="centerX" id="4cV-kc-Haf"/>
+                                        <constraint firstItem="zNf-xs-lqQ" firstAttribute="top" secondItem="9bV-Uy-w5T" secondAttribute="topMargin" constant="5" id="50R-pG-5XE"/>
+                                    </constraints>
+                                </collectionReusableView>
+                            </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6gH-Hm-H5I">
+                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ryL-49-CQb" firstAttribute="top" secondItem="6gH-Hm-H5I" secondAttribute="bottom" constant="-36" id="7jd-KQ-2Ja"/>
+                            <constraint firstItem="du6-5V-7qK" firstAttribute="top" secondItem="ryL-49-CQb" secondAttribute="bottom" id="FmB-wM-3it"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6gH-Hm-H5I" secondAttribute="trailing" constant="-16" id="MSp-k3-b2b"/>
+                            <constraint firstItem="6gH-Hm-H5I" firstAttribute="top" secondItem="6Ua-Uj-7x6" secondAttribute="bottom" id="Wnk-D2-j1V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ryL-49-CQb" secondAttribute="trailing" constant="-16" id="alq-bt-LR6"/>
+                            <constraint firstItem="6gH-Hm-H5I" firstAttribute="leading" secondItem="bhC-i6-jfV" secondAttribute="leadingMargin" constant="-16" id="e7G-n6-R72"/>
+                            <constraint firstItem="ryL-49-CQb" firstAttribute="leading" secondItem="bhC-i6-jfV" secondAttribute="leadingMargin" constant="-16" id="kiP-gY-PaU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="ryL-49-CQb" id="qW9-o9-q7s"/>
+                        <outlet property="searchBar" destination="6gH-Hm-H5I" id="JWU-Ru-Bd2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlt-iH-5pW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769" y="-641"/>
         </scene>
         <!--Repo View Controller-->
         <scene sceneID="9st-ea-IIr">

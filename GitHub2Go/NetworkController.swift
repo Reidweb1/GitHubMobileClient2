@@ -23,7 +23,7 @@ class NetworkController {
     
     func requestOAuthAccess() {
         let url = githubOAuthURL + clientID + "&" + redirectURL + "&" + githubScope
-        UIApplication.sharedApplication().openURL(NSURL(string: url))
+        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
         
     }
     
@@ -34,7 +34,7 @@ class NetworkController {
         
         let urlQuery = clientID + "&" + clientSecretCode + "&" + "code=\(code!)"
         
-        var request = NSMutableURLRequest(URL: NSURL(string: githubPostURL))
+        var request = NSMutableURLRequest(URL: NSURL(string: githubPostURL)!)
         request.HTTPMethod = "POST"
         
         var postData = urlQuery.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
@@ -54,7 +54,7 @@ class NetworkController {
                         var tokenResponse = NSString(data: data, encoding: NSASCIIStringEncoding)
                         println(tokenResponse)
                         
-                        let componants = tokenResponse.componentsSeparatedByString("&")
+                        let componants = tokenResponse!.componentsSeparatedByString("&")
                         for componant in componants {
                             let items = componant.componentsSeparatedByString("=")
                             var isToken = false
@@ -87,7 +87,7 @@ class NetworkController {
         let url = NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)+language:assembly&sort=stars&order=desc")
         println(url)
         let customSession = self.URLSession
-        let repoTask = customSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let repoTask = customSession.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
             
             if let httpResponse = response as? NSHTTPURLResponse {
                 println(httpResponse.statusCode)
@@ -106,5 +106,10 @@ class NetworkController {
             }
         })
         repoTask.resume()
+    }
+    
+    func userFetchRequest (searchTerm: String, completionHandler: (errorDescription: String?, users: [User]) -> Void) {
+        let url = NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)")
+        println(url)
     }
 }
