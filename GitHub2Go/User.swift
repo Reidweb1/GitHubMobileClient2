@@ -13,6 +13,7 @@ class User {
     var userName: String?
     var userImageString: String?
     var userInformation: NSDictionary?
+    var userImage: UIImage?
     
     init(userInfo: NSDictionary) {
         self.userInformation = userInfo

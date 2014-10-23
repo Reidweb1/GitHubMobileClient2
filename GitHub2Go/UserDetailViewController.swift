@@ -13,10 +13,13 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     var user: User?
+    var reverseOrigin: CGRect?
+    var newImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.imageView.image = self.newImage
         self.userNameLabel.text = self.user?.userName
         
         // Do any additional setup after loading the view.

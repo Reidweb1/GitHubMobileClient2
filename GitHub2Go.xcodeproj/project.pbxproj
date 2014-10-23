@@ -23,6 +23,9 @@
 		2894104019F5CA0B007B12A1 /* InitialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */; };
 		289FAD2719F98FF10016792A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289FAD2619F98FF10016792A /* UserDetailViewController.swift */; };
 		289FAD2919F991970016792A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 289FAD2819F991970016792A /* Main.storyboard */; };
+		289FAD2C19F99A9C0016792A /* ShowImageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289FAD2B19F99A9C0016792A /* ShowImageAnimator.swift */; };
+		289FAD2E19F9A1EC0016792A /* github_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 289FAD2D19F9A1EC0016792A /* github_icon.png */; };
+		289FAD3019F9A85D0016792A /* FromImageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289FAD2F19F9A85D0016792A /* FromImageAnimator.swift */; };
 		28F3A52B19F9691F002464A3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F3A52A19F9691F002464A3 /* WebViewController.swift */; };
 		28F3A52D19F98033002464A3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F3A52C19F98033002464A3 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,9 @@
 		2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenViewController.swift; sourceTree = "<group>"; };
 		289FAD2619F98FF10016792A /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		289FAD2819F991970016792A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		289FAD2B19F99A9C0016792A /* ShowImageAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageAnimator.swift; sourceTree = "<group>"; };
+		289FAD2D19F9A1EC0016792A /* github_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = github_icon.png; sourceTree = "<group>"; };
+		289FAD2F19F9A85D0016792A /* FromImageAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromImageAnimator.swift; sourceTree = "<group>"; };
 		28F3A52A19F9691F002464A3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		28F3A52C19F98033002464A3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +112,7 @@
 				2894103A19F5BA77007B12A1 /* Controller */,
 				2894103919F5BA72007B12A1 /* View */,
 				2894103819F5BA6D007B12A1 /* Model */,
+				289FAD2A19F99A860016792A /* Animators */,
 				2894101119F5B48B007B12A1 /* GitHub2Go.xcdatamodeld */,
 				2894100D19F5B48B007B12A1 /* Supporting Files */,
 			);
@@ -115,6 +122,7 @@
 		2894100D19F5B48B007B12A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				289FAD2D19F9A1EC0016792A /* github_icon.png */,
 				2894100E19F5B48B007B12A1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -170,6 +178,15 @@
 				289FAD2619F98FF10016792A /* UserDetailViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		289FAD2A19F99A860016792A /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				289FAD2B19F99A9C0016792A /* ShowImageAnimator.swift */,
+				289FAD2F19F9A85D0016792A /* FromImageAnimator.swift */,
+			);
+			name = Animators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				289FAD2919F991970016792A /* Main.storyboard in Resources */,
+				289FAD2E19F9A1EC0016792A /* github_icon.png in Resources */,
 				2894101D19F5B48B007B12A1 /* LaunchScreen.xib in Resources */,
 				2894101A19F5B48B007B12A1 /* Images.xcassets in Resources */,
 			);
@@ -277,6 +295,7 @@
 				2894103319F5B63C007B12A1 /* RepoViewController.swift in Sources */,
 				281FFD1D19F842F2007C98AD /* UserViewController.swift in Sources */,
 				2894101019F5B48B007B12A1 /* AppDelegate.swift in Sources */,
+				289FAD3019F9A85D0016792A /* FromImageAnimator.swift in Sources */,
 				2894103719F5B786007B12A1 /* Repo.swift in Sources */,
 				2894103519F5B6EF007B12A1 /* RepoTableViewCell.swift in Sources */,
 				2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */,
@@ -284,6 +303,7 @@
 				28F3A52B19F9691F002464A3 /* WebViewController.swift in Sources */,
 				2894101319F5B48B007B12A1 /* GitHub2Go.xcdatamodeld in Sources */,
 				2894104019F5CA0B007B12A1 /* InitialScreenViewController.swift in Sources */,
+				289FAD2C19F99A9C0016792A /* ShowImageAnimator.swift in Sources */,
 				281FFD1F19F843E9007C98AD /* UserCollectionViewCell.swift in Sources */,
 				28F3A52D19F98033002464A3 /* StringExtension.swift in Sources */,
 				28371BDE19F8A45D00A6F3D2 /* User.swift in Sources */,
