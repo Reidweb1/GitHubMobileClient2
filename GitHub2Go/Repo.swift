@@ -14,6 +14,8 @@ class Repo {
     var starCount: Int?
     var followersCount: Int?
     var forkCount: Int?
+    var repoURL: String?
+    var repoUser: String?
     
     init(repoInfo: NSDictionary) {
         self.repoInformation = repoInfo
@@ -21,6 +23,9 @@ class Repo {
         self.starCount = self.repoInformation!.valueForKey("stargazers_count") as? Int
         self.followersCount = self.repoInformation!.valueForKey("watchers_count") as? Int
         self.forkCount = self.repoInformation!.valueForKey("forks_count") as? Int
+        self.repoURL = self.repoInformation!.valueForKey("url") as? String
+        let ownerDict = self.repoInformation!.valueForKey("owner") as? NSDictionary
+        self.repoUser = ownerDict?.valueForKey("login") as? String
     }
     
     class func parseJOSNDataIntoRepos(rawJSONData: NSData ) -> [Repo]? {

@@ -49,6 +49,19 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let repo = self.repos![indexPath.row]
+        let newDetailViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier("REPO_WEB_VIEW") as WebViewController
+        newDetailViewcontroller.repo = repo
+        self.navigationController?.pushViewController(newDetailViewcontroller, animated: true)
+        
+    }
+    
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        println(text)
+        return true
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if self.searchBar.text != nil {
             var searchText = self.searchBar.text

@@ -1,5 +1,5 @@
 //
-//  WebViewController.swift
+//  UserDetailViewController.swift
 //  GitHub2Go
 //
 //  Created by Reid Weber on 10/23/14.
@@ -7,25 +7,18 @@
 //
 
 import UIKit
-import WebKit
 
-class WebViewController: UIViewController {
+class UserDetailViewController: UIViewController {
 
-    var webView = WKWebView()
-    var repo: Repo?
-    
-    override func loadView() {
-        self.view = self.webView
-    }
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let repoName = self.repo?.repoName
-        let userName = self.repo?.repoUser
-        let url = NSURL(string: "https://github.com/\(userName!)/\(repoName!)")
-        self.webView.loadRequest(NSURLRequest(URL: url!))
 
+        self.userNameLabel.text = self.user?.userName
+        
         // Do any additional setup after loading the view.
     }
 

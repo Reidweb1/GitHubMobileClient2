@@ -53,6 +53,13 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let user = self.users![indexPath.row]
+        let newDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("USER_DETAIL_VIEW") as UserDetailViewController
+        newDetailViewController.user = user
+        self.navigationController?.pushViewController(newDetailViewController, animated: true)
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if self.searchBar.text != nil {
             var searchText = self.searchBar.text!
