@@ -18,6 +18,7 @@ class NetworkController {
     let redirectURL = "redirect_uri=placeholdername://test"
     let githubPostURL = "https://github.com/login/oauth/access_token"
     var accessToken = ""
+    let imageQueue = NSOperationQueue()
     
     var URLSession: NSURLSession = NSURLSession()
     

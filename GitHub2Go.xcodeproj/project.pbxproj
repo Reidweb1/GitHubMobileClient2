@@ -22,6 +22,7 @@
 		2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103B19F5BAA4007B12A1 /* NetworkController.swift */; };
 		2894103E19F5BB29007B12A1 /* SplitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */; };
 		2894104019F5CA0B007B12A1 /* InitialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */; };
+		28F3A52B19F9691F002464A3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F3A52A19F9691F002464A3 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		2894103B19F5BAA4007B12A1 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitDetailViewController.swift; sourceTree = "<group>"; };
 		2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenViewController.swift; sourceTree = "<group>"; };
+		28F3A52A19F9691F002464A3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				2894103D19F5BB29007B12A1 /* SplitDetailViewController.swift */,
 				2894103F19F5CA0B007B12A1 /* InitialScreenViewController.swift */,
 				281FFD1C19F842F2007C98AD /* UserViewController.swift */,
+				28F3A52A19F9691F002464A3 /* WebViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				2894103519F5B6EF007B12A1 /* RepoTableViewCell.swift in Sources */,
 				2894103C19F5BAA4007B12A1 /* NetworkController.swift in Sources */,
 				2894103E19F5BB29007B12A1 /* SplitDetailViewController.swift in Sources */,
+				28F3A52B19F9691F002464A3 /* WebViewController.swift in Sources */,
 				2894101319F5B48B007B12A1 /* GitHub2Go.xcdatamodeld in Sources */,
 				2894104019F5CA0B007B12A1 /* InitialScreenViewController.swift in Sources */,
 				281FFD1F19F843E9007C98AD /* UserCollectionViewCell.swift in Sources */,
