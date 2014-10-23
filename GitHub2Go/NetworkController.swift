@@ -27,6 +27,13 @@ class NetworkController {
         
     }
     
+    func stringToImage(urlString: String, completionHandler: (image: UIImage) -> Void) {
+        var url = NSURL(string: urlString)
+        var photoData = NSData(contentsOfURL: url!)
+        var userPhoto = UIImage(data: photoData!)
+        completionHandler(image: userPhoto!)
+    }
+    
     func handleOAUTHURL(callbackURL: NSURL) {
         let query = callbackURL.query
         let componants = query?.componentsSeparatedByString("code=")
@@ -110,6 +117,24 @@ class NetworkController {
     
     func userFetchRequest (searchTerm: String, completionHandler: (errorDescription: String?, users: [User]) -> Void) {
         let url = NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)")
-        println(url)
+        println(url!)
+        let customSession = self.URLSession
+        let userTask = customSession.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
+            if let httpResponse = response as? NSHTTPURLResponse {
+                println(httpResponse.statusCode)
+                switch httpResponse.statusCode {
+                case 200...204:
+                    println("SUCCESS")
+                    if data == nil {
+                        println("Data was nil for users")
+                    }
+                    let users = User.parseJOSNDataIntoUsers(data)
+                    completionHandler(errorDescription: nil, users: users!)
+                default:
+                    println("Error returning users")
+                }
+            }
+        })
+        userTask.resume()
     }
 }

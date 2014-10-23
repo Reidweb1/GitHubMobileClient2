@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				2894103619F5B786007B12A1 /* Repo.swift */,
-				2894103B19F5BAA4007B12A1 /* NetworkController.swift */,
 				28371BDD19F8A45D00A6F3D2 /* User.swift */,
+				2894103B19F5BAA4007B12A1 /* NetworkController.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

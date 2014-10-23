@@ -36,45 +36,39 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        if self.users?.count == nil {
+            return 0
+        } else {
+            return self.users!.count
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("USER_CELL", forIndexPath: indexPath) as UserCollectionViewCell
-        cell.backgroundColor = UIColor.redColor()
+        cell.userNameLabel.text = self.users![indexPath.row].userName
+        self.networkController?.stringToImage(self.users![indexPath.row].userImageString!, completionHandler: { (image) -> Void in
+            cell.imageView.image = image
+        })
         return cell
         
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-        println(self.searchBar.text)
-//        if self.searchBar.text != nil {
-//            var searchText = self.searchBar.text
-//            println(searchText)
-//            self.networkController?.repoFetchRequest(searchText, completionHandler: { (errorDescription, repos) -> Void in
-//                if errorDescription == nil {
-//                    self.users = user
-//                    println("Success")
-//                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                        self.tableView.reloadData()
-//                    })
-//                } else {
-//                    println("Error on Tableview Load")
-//                }
-//            })
-//            self.searchBar.resignFirstResponder()
-//        }
+        if self.searchBar.text != nil {
+            var searchText = self.searchBar.text!
+            self.networkController?.userFetchRequest(searchText, completionHandler: { (errorDescription, users) -> Void in
+                if errorDescription == nil {
+                    self.users = users
+                    println("Got Users from Network Controller")
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        self.collectionView.reloadData()
+                    })
+                } else {
+                    println("Error on Collection View Load")
+                }
+            })
+            self.searchBar.resignFirstResponder()
+            
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

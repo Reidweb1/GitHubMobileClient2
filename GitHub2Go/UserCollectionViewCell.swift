@@ -10,4 +10,7 @@ import UIKit
 
 class UserCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
 }
