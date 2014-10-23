@@ -66,18 +66,13 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let user = self.users![indexPath.row]
         
-        // Grab the attributes of the tapped upon cell
         let attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath)
+        let cellOrigin = self.view.convertRect(attributes!.frame, fromView: collectionView)
         
-        // Grab the onscreen rectangle of the tapped upon cell, relative to the collection view
-        let origin = self.view.convertRect(attributes!.frame, fromView: collectionView)
-        
-        // Save our starting location as the tapped upon cells frame
-        self.origin = origin
+        self.origin = cellOrigin
         
         var newImage: UIImage?
         
-        // Find tapped image, initialize next view controller
         if self.users![indexPath.row].userImage == nil {
             self.networkController?.stringToImage(self.users![indexPath.row].userImageString!, completionHandler: { (image) -> Void in
                 newImage! = image
@@ -90,12 +85,9 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let newDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("USER_DETAIL_VIEW") as UserDetailViewController
         newDetailViewController.user = user
         newDetailViewController.newImage = newImage
-        // Set image and reverseOrigin properties on next view controller
         
         newDetailViewController.reverseOrigin = self.origin!
-        
-        // Trigger a normal push animations; let navigation controller take over.
-       // self.navigationController?.showDetailViewController(newDetailViewController, sender: self)
+
         self.navigationController?.pushViewController(newDetailViewController, animated: true)
     }
     
@@ -134,7 +126,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else if let mainViewContorller = fromVC as? UserDetailViewController {
             var animator = FromImageAnimator()
             animator.origin = mainViewContorller.reverseOrigin
-            return nil
+            return animator
         } else {
             return nil
         }
