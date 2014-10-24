@@ -14,6 +14,8 @@ class User {
     var userImageString: String?
     var userInformation: NSDictionary?
     var userImage: UIImage?
+    var userBio: String?
+    var hireable: Bool?
     
     init(userInfo: NSDictionary) {
         self.userInformation = userInfo
@@ -24,6 +26,8 @@ class User {
     init(profileInfo: NSDictionary) {
         self.userName = profileInfo.valueForKey("login") as? String
         self.userImageString = profileInfo.valueForKey("avatar_url") as? String
+        self.userBio = profileInfo.valueForKey("bio") as? String
+        self.hireable = profileInfo.valueForKey("hireable") as? Bool
     }
     
     class func parseJOSNDataIntoSingleUser(rawJSONData: NSData) -> User? {
@@ -50,7 +54,6 @@ class User {
                     if let userDictionary: NSDictionary = JSONDict as? NSDictionary {
                         var newUser = User(userInfo: userDictionary)
                         users.append(newUser)
-                        println(newUser.userName)
                     }
                 }
             }

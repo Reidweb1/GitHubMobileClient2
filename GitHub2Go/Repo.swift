@@ -40,7 +40,6 @@ class Repo {
                     if let repoDictionary: NSDictionary = JSONDict as? NSDictionary {
                         var newRepo = Repo(repoInfo: repoDictionary)
                         repos.append(newRepo)
-                        println(newRepo.repoName)
                     }
                 }
             }

@@ -12,6 +12,9 @@ class ProfileDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var profileLabel: UILabel!
+    @IBOutlet weak var hireLabel: UILabel!
+    @IBOutlet weak var bioTextView: UITextView!
+    
     var networkController: NetworkController?
     var authUser: User?
     
@@ -24,7 +27,17 @@ class ProfileDetailViewController: UIViewController {
             if errorDescription == nil {
                 self.authUser = user
                 self.profileLabel.text = self.authUser!.userName
-                
+                if self.authUser!.hireable == true {
+                    self.hireLabel.text = "Hireable: Yes"
+                } else {
+                    self.hireLabel.text = "Hireable: No"
+                }
+                if self.authUser?.userBio == nil {
+                    self.bioTextView.text = "N/A"
+                } else {
+                    self.bioTextView.text = self.authUser?.userBio
+                }
+                println(self.authUser)
                 self.networkController?.stringToImage(self.authUser!.userImageString!, completionHandler: { (image) -> Void in
                     self.imageView.image = image
                 })
