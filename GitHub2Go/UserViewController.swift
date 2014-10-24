@@ -124,9 +124,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
             animator.origin = mainViewController.origin
             return animator
         } else if let mainViewContorller = fromVC as? UserDetailViewController {
-            var animator = FromImageAnimator()
-            animator.origin = mainViewContorller.reverseOrigin
-            return animator
+            if let destinationViewController = toVC as? UserViewController {
+                var animator = FromImageAnimator()
+                animator.origin = mainViewContorller.reverseOrigin
+                return animator
+            }
+            return nil
         } else {
             return nil
         }

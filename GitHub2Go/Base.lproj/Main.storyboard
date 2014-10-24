@@ -161,24 +161,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJX-bN-3u2">
+                                <rect key="frame" x="397" y="538" width="187" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="View User Repos">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewReposButtonClicked:" destination="9Rz-uA-TLf" eventType="touchUpInside" id="il1-5x-1Y2"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6HB-hy-ECh" firstAttribute="trailing" secondItem="a8m-oM-fxa" secondAttribute="trailingMargin" id="36k-VF-wGf"/>
+                            <constraint firstItem="ZhY-sz-UKF" firstAttribute="top" secondItem="mJX-bN-3u2" secondAttribute="bottom" constant="20" id="5z7-PF-OWR"/>
                             <constraint firstItem="6HB-hy-ECh" firstAttribute="top" secondItem="nrk-Xe-h73" secondAttribute="bottom" constant="8" id="YVu-MJ-dyG"/>
                             <constraint firstItem="WPj-rr-iYC" firstAttribute="leading" secondItem="a8m-oM-fxa" secondAttribute="leadingMargin" id="azj-QX-tdJ"/>
                             <constraint firstItem="6HB-hy-ECh" firstAttribute="leading" secondItem="WPj-rr-iYC" secondAttribute="trailing" constant="8" id="qkO-Kr-De3"/>
+                            <constraint firstItem="mJX-bN-3u2" firstAttribute="trailing" secondItem="a8m-oM-fxa" secondAttribute="trailingMargin" id="rrT-gw-NLz"/>
                             <constraint firstItem="WPj-rr-iYC" firstAttribute="top" secondItem="nrk-Xe-h73" secondAttribute="bottom" constant="8" id="zkr-bM-MJq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qLN-v3-qkk"/>
                     <connections>
                         <outlet property="imageView" destination="WPj-rr-iYC" id="dpb-0l-i5x"/>
                         <outlet property="userNameLabel" destination="6HB-hy-ECh" id="iPr-Zt-aMP"/>
+                        <outlet property="viewReposButton" destination="mJX-bN-3u2" id="eme-vo-kdd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9HH-tp-fNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3076" y="-641"/>
+            <point key="canvasLocation" x="3082" y="-641"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="WMo-tO-Q6R">
@@ -196,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spf-f0-bby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2405" y="21"/>
+            <point key="canvasLocation" x="2402" y="21"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="ggD-oE-R8M">
@@ -216,7 +230,7 @@
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ryL-49-CQb">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YHy-P3-jjm">
                                     <size key="itemSize" width="120" height="175"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -261,7 +275,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OPX-xg-Gr7">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_COLLECTION_VIEW_HEADER" id="OPX-xg-Gr7">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -441,7 +455,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mY8-8c-LdR" firstAttribute="top" secondItem="n4F-tg-QGa" secondAttribute="bottom" constant="20" id="035-Ar-DV1"/>
                             <constraint firstItem="XhR-Bt-iUX" firstAttribute="top" secondItem="mY8-8c-LdR" secondAttribute="bottom" constant="8" id="0JL-QG-alF"/>

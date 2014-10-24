@@ -13,6 +13,7 @@ class WebViewController: UIViewController {
 
     var webView = WKWebView()
     var repo: Repo?
+    var user: User?
     
     override func loadView() {
         self.view = self.webView
@@ -21,9 +22,17 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let repoName = self.repo?.repoName
-        let userName = self.repo?.repoUser
-        let url = NSURL(string: "https://github.com/\(userName!)/\(repoName!)")
+        var url: NSURL?
+        
+        if self.repo != nil {
+            let repoName = self.repo?.repoName
+            let userName = self.repo?.repoUser
+            url = NSURL(string: "https://github.com/\(userName!)/\(repoName!)")
+        } else {
+            let userName = self.user!.userName
+            url = NSURL(string: "https://github.com/\(userName!)")
+        }
+        println(url!)
         self.webView.loadRequest(NSURLRequest(URL: url!))
 
         // Do any additional setup after loading the view.
