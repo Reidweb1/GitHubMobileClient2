@@ -18,7 +18,6 @@ class InitialScreenViewController: UIViewController {
 
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
-
         let key = "Token"
         if let value = NSUserDefaults.standardUserDefaults().valueForKey(key) as? String {
             self.networkController!.accessToken = value
