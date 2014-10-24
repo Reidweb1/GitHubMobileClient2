@@ -138,4 +138,22 @@ class NetworkController {
         })
         userTask.resume()
     }
+    
+    func fetchAuthenticatedUser(completionHandler: (errorDescription: String?, user: User) -> Void) {
+        let url = NSURL(string: "https://api.github.com/search/user")
+        let customSession = self.URLSession
+        let userTask = customSession.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
+            if let httpResponse = response as? NSHTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...204:
+                    println("SUCCESS")
+                    let authUser = User.parseJOSNDataIntoSingleUser(data)
+                    completionHandler(errorDescription: nil, user: authUser!)
+                default:
+                    println("Error returning user")
+                }
+            }
+        })
+    }
+    
 }

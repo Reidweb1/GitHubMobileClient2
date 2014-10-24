@@ -21,6 +21,27 @@ class User {
         self.userImageString = userInformation!.valueForKey("avatar_url") as? String
     }
     
+    class func parseJOSNDataIntoSingleUser(rawJSONData: NSData) -> User? {
+        var error: NSError?
+        if let JSONDictionary = NSJSONSerialization.JSONObjectWithData(rawJSONData, options: nil, error: &error) as? NSDictionary {
+            
+            var user: User?
+            
+            if let searchitemsArray: NSArray = JSONDictionary["items"] as? NSArray {
+                for JSONDict in searchitemsArray {
+                    if let userDictionary: NSDictionary = JSONDict as? NSDictionary {
+                        var newUser = User(userInfo: userDictionary)
+                        user = newUser
+                        println(newUser.userName)
+                    }
+                }
+            }
+            return user!
+        } else {
+            return nil
+        }
+    }
+    
     class func parseJOSNDataIntoUsers(rawJSONData: NSData ) -> [User]? {
         
         var error: NSError?

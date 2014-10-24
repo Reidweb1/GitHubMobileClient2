@@ -24,9 +24,17 @@ class FromImageAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView()
         containerView.insertSubview(toViewController.view, aboveSubview: fromViewController.view)
         toViewController.view.alpha = 0.0
+        
+        fromViewController.view.frame = toViewController.view.bounds
+        
+        //toViewController.view.frame = fromViewController.reverseOrigin!
+        //toViewController.view.frame = self.origin!
+        //toViewController.imageView.frame = toViewController.view.bounds
+        //fromViewController.view.frame = self.origin!
+        
         UIView.animateWithDuration(1.0, delay: 0.0, options: nil, animations: { () -> Void in
             fromViewController.view.frame = self.origin!
-            fromViewController.imageView.frame = fromViewController.view.bounds
+            toViewController.view.frame = toViewController.view.bounds
             toViewController.view.alpha = 1.0
             }) { (finished) -> Void in
                 transitionContext.completeTransition(finished)
