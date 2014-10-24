@@ -21,9 +21,9 @@ class ProfileDetailViewController: UIViewController {
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
         self.networkController?.fetchAuthenticatedUser({ (errorDescription, user) -> Void in
-            if errorDescription != nil {
+            if errorDescription == nil {
                 self.authUser = user
-                self.profileLabel.text = self.authUser?.userName
+                self.profileLabel.text = self.authUser!.userName
                 
                 self.networkController?.stringToImage(self.authUser!.userImageString!, completionHandler: { (image) -> Void in
                     self.imageView.image = image

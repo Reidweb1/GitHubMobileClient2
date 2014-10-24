@@ -22,8 +22,10 @@ class InitialScreenViewController: UIViewController {
         let key = "Token"
         if let value = NSUserDefaults.standardUserDefaults().valueForKey(key) as? String {
             self.networkController!.accessToken = value
+            println(value)
             var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-            configuration.HTTPAdditionalHeaders = ["Authoriziation" : "token \(self.networkController!.accessToken)"]
+            configuration.HTTPAdditionalHeaders = ["Authorization" : "token \(self.networkController!.accessToken)"]
+            println(configuration.HTTPAdditionalHeaders)
             var mySession = NSURLSession(configuration: configuration)
             self.networkController!.URLSession = mySession
         } else {

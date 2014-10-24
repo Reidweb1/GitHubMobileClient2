@@ -79,7 +79,7 @@ class NetworkController {
                             }
                         }
                         var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-                        configuration.HTTPAdditionalHeaders = ["Authoriziation" : "token \(self.accessToken)"]
+                        configuration.HTTPAdditionalHeaders = ["Authorization" : "token \(self.accessToken)"]
                         var mySession = NSURLSession(configuration: configuration)
                         self.URLSession = mySession
                     default:
@@ -140,20 +140,29 @@ class NetworkController {
     }
     
     func fetchAuthenticatedUser(completionHandler: (errorDescription: String?, user: User) -> Void) {
-        let url = NSURL(string: "https://api.github.com/search/user")
+        let url = NSURL(string: "https://api.github.com/user")
         let customSession = self.URLSession
+        println(self.accessToken)
         let userTask = customSession.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                println("ERROR FROM AUTH USER FETCH: " + error.localizedDescription)
+            }
+            
             if let httpResponse = response as? NSHTTPURLResponse {
                 switch httpResponse.statusCode {
-                case 200...204:
+                case 200...299:
                     println("SUCCESS")
                     let authUser = User.parseJOSNDataIntoSingleUser(data)
-                    completionHandler(errorDescription: nil, user: authUser!)
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        completionHandler(errorDescription: nil, user: authUser!)
+                    })
                 default:
-                    println("Error returning user")
+                    println(httpResponse.description)
                 }
             }
         })
+        userTask.resume()
     }
     
 }
